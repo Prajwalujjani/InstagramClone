@@ -4,36 +4,75 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
 
-public class SignUP extends AppCompatActivity {
+public class SignUP extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView boxer;
+private Button btnSave;
+private EditText edtName,edtPunchSpeed,edtPunchPower,edtKickSpeed,edtKickPower;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        boxer = findViewById(R.id.txtBoxer);
+
+        Parse.enableLocalDatastore(SignUP.this);
+        Parse.initialize(new Parse.Configuration.Builder(SignUP.this)
+                .applicationId("RdsQy0ti78FX3eK2BKDU95sElQjlOiF1gUeLxfwU")
+                .clientKey("KyRxL2Ha8NThfDqwlEFlyPHC5t1AgW28aoYFo4iT")
+                .server("https://parseapi.back4app.com/")
+                .enableLocalDataStore()
+                .build());
+
+        btnSave = findViewById(R.id.btnSave);
+        btnSave.setOnClickListener(SignUP.this);
+        edtName = findViewById(R.id.edtName);
+        edtPunchSpeed = findViewById(R.id.edtPunchSpeed);
+        edtPunchPower = findViewById(R.id.edtPunchPower);
+        edtKickSpeed = findViewById(R.id.edtKickSPeed);
+        edtKickPower = findViewById(R.id.edtKickPower);
 
     }
 
-    public void helloWorldTapped(View view){
+  //  public void helloWorldTapped(View view){
 
-        ParseObject boxer = new ParseObject("Boxer");
-        boxer.put("punch_speed",200);
-        boxer.saveInBackground(new SaveCallback() {
+//        ParseObject boxer = new ParseObject("Boxer");
+//        boxer.put("punch_speed",200);
+//        boxer.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                if (e == null) {
+//
+//                    Toast.makeText(SignUP.this, "Boxer object is saved successfully", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+
+ //   }
+    @Override
+    public void onClick(View v) {
+        final ParseObject kickBoxer = new ParseObject("KickBoxer");
+        kickBoxer.put("Name",edtName.getText().toString());
+        kickBoxer.put("punchSpeed",Integer.parseInt(edtPunchSpeed.getText().toString()));
+        kickBoxer.put("punchPower",Integer.parseInt(edtPunchPower.getText().toString()));
+        kickBoxer.put("kickSpeed",Integer.parseInt(edtKickSpeed.getText().toString()));
+        kickBoxer.put("kickPower",Integer.parseInt(edtKickPower.getText().toString()));
+        kickBoxer.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
-                    Toast.makeText(SignUP.this, "Boxer object is saved successfully", Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(SignUP.this, kickBoxer.get("Name") + " is saved to server", Toast.LENGTH_SHORT).show();
+                } else{
+                    Toast.makeText(SignUP.this,e.getMessage() , Toast.LENGTH_LONG).show();
                 }
             }
         });

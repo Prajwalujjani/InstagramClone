@@ -2,6 +2,7 @@ package com.example.instagramclone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,8 @@ public class SignUP extends AppCompatActivity implements View.OnClickListener {
     private Button btnSave;
     private EditText edtName, edtPunchSpeed, edtPunchPower, edtKickSpeed, edtKickPower;
 
+    private Button btnTransition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,8 @@ public class SignUP extends AppCompatActivity implements View.OnClickListener {
         edtKickSpeed = findViewById(R.id.edtKickSPeed);
         edtKickPower = findViewById(R.id.edtKickPower);
 
+        btnTransition = findViewById(R.id.btnNextActivity);
+
 
         Parse.enableLocalDatastore(SignUP.this);
         Parse.initialize(new Parse.Configuration.Builder(SignUP.this)
@@ -42,6 +47,17 @@ public class SignUP extends AppCompatActivity implements View.OnClickListener {
                 .enableLocalDataStore()
                 .build());
 
+
+        btnTransition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(SignUP.this, SignUpLoginActivity.class);
+                startActivity(intent);
+
+
+            }
+        });
 
     }
 

@@ -35,7 +35,7 @@ public class TabAdapted extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 3; //It is used for how many tabs we are using
 
     }
 

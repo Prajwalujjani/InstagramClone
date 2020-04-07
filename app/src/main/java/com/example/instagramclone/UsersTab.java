@@ -14,6 +14,9 @@ import android.view.ViewGroup;
  */
 public class UsersTab extends Fragment {
 
+    //This is created using Fragment Tab in the java package
+
+
     public UsersTab() {
         // Required empty public constructor
     }

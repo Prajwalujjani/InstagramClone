@@ -132,13 +132,15 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+
+    //This is used when we tap on the blank area it will close keypad
     public void rootLayOutIsTapped(View view) {
         try {
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         } catch (Exception e) {
 
-            e.printStackTrace();
+            e.printStackTrace(); //it will handle errors and exception in java
 
         }
 

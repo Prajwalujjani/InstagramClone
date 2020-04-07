@@ -25,7 +25,7 @@ public class SocialMediaActivity extends AppCompatActivity {
 
         setTitle("Social Media App!!!");
 
-        toolbar = findViewById(R.id.my_Toolbar);
+        toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
 
         viewPager = findViewById(R.id.viewPager);

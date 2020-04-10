@@ -58,8 +58,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         Parse.enableLocalDatastore(SignUp.this);
         Parse.initialize(new Parse.Configuration.Builder(SignUp.this)
-                .applicationId("kpbEsiZqg67OV5WmNVUdFJV4syUHmEtYsKHngWqj")
-                .clientKey("1XYARHsgW0IIooV91nsvL5O2ASyqTQzj2K40eYBY")
+                .applicationId("RdsQy0ti78FX3eK2BKDU95sElQjlOiF1gUeLxfwU")
+                .clientKey("KyRxL2Ha8NThfDqwlEFlyPHC5t1AgW28aoYFo4iT")
                 .server("https://parseapi.back4app.com/")
                 .enableLocalDataStore()
                 .build());
@@ -95,7 +95,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     appUser.setUsername(edtUserName.getText().toString());
                     appUser.setPassword(edtPassword.getText().toString());
                     final ProgressDialog progressDialog = new ProgressDialog(this);
-                    progressDialog.setMessage("Signing up" + edtUserName.getText().toString());
+                    progressDialog.setMessage("Signing up " + edtUserName.getText().toString());
                     progressDialog.show();
 
                     appUser.signUpInBackground(new SignUpCallback() {

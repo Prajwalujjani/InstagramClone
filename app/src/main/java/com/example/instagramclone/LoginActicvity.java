@@ -115,5 +115,7 @@ public class LoginActicvity extends AppCompatActivity implements View.OnClickLis
 
         Intent intent = new Intent(LoginActicvity.this,SocialMediaActivity.class);
         startActivity(intent);
+        finish();
+
     }
 }
